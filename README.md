@@ -9,4 +9,4 @@ It allows people to create and store reviews of places they've visited.
 On login shows a positive review for a random business. This allows reviews to be found serendipitously.
 
 ### UML Model
-[Schema](Schema.JPG)
+![Schema](Schema.JPG)
