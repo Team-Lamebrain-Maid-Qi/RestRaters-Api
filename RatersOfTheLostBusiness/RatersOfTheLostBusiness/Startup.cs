@@ -6,6 +6,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using RatersOfTheLostBusiness.Data;
+using RatersOfTheLostBusiness.Models.Interfaces;
+using RatersOfTheLostBusiness.Models.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +34,9 @@ namespace RatersOfTheLostBusiness
                 options.UseSqlServer(connectionString);
             });
 
+            services.AddTransient<IBusiness, BusinessService>();
+            services.AddTransient<IReviewer, ReviewerService>();
+            services.AddTransient<IBusinessReview, BusinessReviewService>();
             services.AddControllers();
         }
 

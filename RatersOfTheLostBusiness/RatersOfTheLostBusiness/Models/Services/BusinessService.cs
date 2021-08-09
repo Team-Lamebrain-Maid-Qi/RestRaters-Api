@@ -38,7 +38,29 @@ namespace RatersOfTheLostBusiness.Models.Services
                     State = business.State,
                     PhoneNumber = business.PhoneNumber,
                     Type = business.Type,
-                    BusinessReviews = business.BusinessReviews
+                    Reviewers = business.BusinessReviews
+                        .Select(t => new BusinessReviewDto
+                        {
+                            ReviewerId = t.reviewer.Id,
+                            BusinessId = t.business.Id,
+                            Rating = t.Rating,
+                            Review = t.Review
+                        }).ToList()
+                }).FirstOrDefaultAsync(s => s.Id == id);
+        }
+        public async Task<List<BusinessDto>> GetBusinesses() // async
+        {
+            return await _context.businesses
+                .Select(business => new BusinessDto
+                {
+                    Id = business.Id,
+                    Name = business.Name,
+                    Address = business.Address,
+                    City = business.City,
+                    State = business.State,
+                    PhoneNumber = business.PhoneNumber,
+                    Type = business.Type,
+                    Reviewers = business.BusinessReviews
                         .Select(t => new BusinessReviewDto
                         {
                             ReviewerId = t.reviewer.Id,
@@ -47,10 +69,6 @@ namespace RatersOfTheLostBusiness.Models.Services
                             Review = t.Review
                         }).ToList()
                 }).ToListAsync();
-        }
-        public Task<List<BusinessDto>> GetBusinesses() // async
-        {
-            throw new NotImplementedException(); // LINQ-stuff here
         }
         public async Task<Business> UpdateBusiness(int id, Business business)
         {

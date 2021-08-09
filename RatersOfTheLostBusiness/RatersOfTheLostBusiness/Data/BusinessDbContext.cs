@@ -35,14 +35,21 @@ namespace RatersOfTheLostBusiness.Data
                     Type = "Software Service"
                 }
             );
-           // modelBuilder.Entity<R>
-
-
-
+            // Id, First, Last, Email, PhoneNumber
+            modelBuilder.Entity<Reviewer>().HasData(
+                new Reviewer
+                {
+                    Id = 1,
+                    First = "John",
+                    Last = "Stewart",
+                    Email = "JS191@example.com",
+                    PhoneNumber = "555-555-1221",
+                    UserName = "BestGreenLatern"
+                }
+            );
             modelBuilder.Entity<BusinessReview>().HasKey(
                 businessReview => new { businessReview.BusinessId, businessReview.ReviewerId }
                 );
-
         }
     }
 }

@@ -23,14 +23,50 @@ namespace RatersOfTheLostBusiness.Models.Services
             return reviewer;
         }
 
-        public Task<ReviewerDto> GetReviewer(int id)
+        public async Task<ReviewerDto> GetReviewer(int id)
         {
-            throw new NotImplementedException(); // LINQ-stuff here
+
+            // Id, First, Last, Email, PhoneNumber
+            return await _context.reviewers
+                .Select(reviewers => new ReviewerDto
+                {
+                    Id = reviewers.Id,
+                    First = reviewers.First,
+                    Last = reviewers.Last,
+                    Email = reviewers.Email,
+                    PhoneNumber = reviewers.PhoneNumber,
+                    UserName = reviewers.UserName,
+                    Reviewers = reviewers.BusinessReviews
+                        .Select(t => new BusinessReviewDto
+                        {
+                            ReviewerId = t.reviewer.Id,
+                            BusinessId = t.business.Id,
+                            Rating = t.Rating,
+                            Review = t.Review
+                        }).ToList()
+                }).FirstOrDefaultAsync(s => s.Id == id);
         }
 
-        public Task<List<ReviewerDto>> GetReviewers()
+        public async Task<List<ReviewerDto>> GetReviewers()
         {
-            throw new NotImplementedException(); // LINQ-stuff here
+            return await _context.reviewers
+                .Select(reviewers => new ReviewerDto
+                {
+                    Id = reviewers.Id,
+                    First = reviewers.First,
+                    Last = reviewers.Last,
+                    Email = reviewers.Email,
+                    PhoneNumber = reviewers.PhoneNumber,
+                    UserName = reviewers.UserName,
+                    Reviewers = reviewers.BusinessReviews
+                        .Select(t => new BusinessReviewDto
+                        {
+                            ReviewerId = t.reviewer.Id,
+                            BusinessId = t.business.Id,
+                            Rating = t.Rating,
+                            Review = t.Review
+                        }).ToList()
+                }).ToListAsync();
         }
 
         public async Task<Reviewer> UpdateReviewers(int id, Reviewer reviewer)
