@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace RatersOfTheLostBusiness.Data
 {
+
     public class BusinessDbContext : DbContext
     {
         public DbSet<Business> businesses { get; set; }
@@ -20,9 +21,28 @@ namespace RatersOfTheLostBusiness.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+            //id, name, city, state, address, phone, type
+            modelBuilder.Entity<Business>().HasData(
+                new Business
+                {
+                    Id = 1,
+                    Name = "Twilio",
+                    Address = "375 Beale Street Suite 300",
+                    City = "San Franciso",
+                    State = "CA",
+                    PhoneNumber = "844-814-4627",
+                    Type = "Software Service"
+                }
+            );
+           // modelBuilder.Entity<R>
+
+
+
             modelBuilder.Entity<BusinessReview>().HasKey(
                 businessReview => new { businessReview.BusinessId, businessReview.ReviewerId }
                 );
+
         }
     }
 }

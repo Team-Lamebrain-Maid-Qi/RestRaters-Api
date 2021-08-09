@@ -46,6 +46,18 @@ namespace RatersOfTheLostBusiness.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("businesses");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Address = "375 Beale Street Suite 300",
+                            City = "San Franciso",
+                            Name = "Twilio",
+                            PhoneNumber = "844-814-4627",
+                            State = "CA",
+                            Type = "Software Service"
+                        });
                 });
 
             modelBuilder.Entity("RatersOfTheLostBusiness.Models.BusinessReview", b =>

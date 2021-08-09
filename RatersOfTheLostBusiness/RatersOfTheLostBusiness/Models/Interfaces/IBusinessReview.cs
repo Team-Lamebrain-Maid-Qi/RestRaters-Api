@@ -15,7 +15,7 @@ namespace RatersOfTheLostBusiness.Models.Interfaces
         // Get one by ID
         Task<BusinessReviewDto> GetBusinessReview(int id);
         // Update
-        Task<BusinessReview> UpdatedBusinessReview(int id, BusinessReview businessreview); // Probably needs to connected to business and *reviewer
+        Task<BusinessReview> UpdatedBusinessReview(int ReviewerId, int BusinessId, BusinessReview businessReview); // Probably needs to connected to business and *reviewer
         // Delete
         Task Delete(int id);
     }

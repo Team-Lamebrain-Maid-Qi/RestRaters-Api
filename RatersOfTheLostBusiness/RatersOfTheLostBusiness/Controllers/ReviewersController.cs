@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RatersOfTheLostBusiness.Data;
 using RatersOfTheLostBusiness.Models;
+using RatersOfTheLostBusiness.Models.DTOs;
+using RatersOfTheLostBusiness.Models.Interfaces;
 
 namespace RatersOfTheLostBusiness.Controllers
 {
@@ -14,72 +16,48 @@ namespace RatersOfTheLostBusiness.Controllers
     [ApiController]
     public class ReviewersController : ControllerBase
     {
-        private readonly BusinessDbContext _context;
+        private readonly IReviewer _reviewer;
 
-        public ReviewersController(BusinessDbContext context)
+        public ReviewersController(IReviewer r)
         {
-            _context = context;
+            _reviewer = r;
         }
 
-        // GET: api/Reviewers
+        // GET: api/Reviewers // Multi
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Reviewer>>> Getreviewers()
+        public async Task<ActionResult<IEnumerable<ReviewerDto>>> Getreviewers()
         {
-            return await _context.reviewers.ToListAsync();
+            var list = await _reviewer.GetReviewers();
+            return Ok(list);
         }
 
-        // GET: api/Reviewers/5
+        // GET: api/Reviewers/5 // Single
         [HttpGet("{id}")]
-        public async Task<ActionResult<Reviewer>> GetReviewer(int id)
+        public async Task<ActionResult<ReviewerDto>> GetReviewer(int id)
         {
-            var reviewer = await _context.reviewers.FindAsync(id);
-
-            if (reviewer == null)
-            {
-                return NotFound();
-            }
-
+            ReviewerDto reviewer = await _reviewer.GetReviewer(id);
             return reviewer;
         }
 
         // PUT: api/Reviewers/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutReviewer(int id, Reviewer reviewer)
+        public async Task<IActionResult> PutReviewer(int id, Reviewer reviewer) // Maybe Dto?
         {
             if (id != reviewer.Id)
             {
                 return BadRequest();
             }
-
-            _context.Entry(reviewer).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ReviewerExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            var updatedReviewer = await _reviewer.UpdateReviewers(id, reviewer);
+            return Ok(updatedReviewer);
         }
 
         // POST: api/Reviewers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Reviewer>> PostReviewer(Reviewer reviewer)
+        public async Task<ActionResult<ReviewerDto>> PostReviewer(Reviewer reviewer)
         {
-            _context.reviewers.Add(reviewer);
-            await _context.SaveChangesAsync();
+            await _reviewer.Create(reviewer);
 
             return CreatedAtAction("GetReviewer", new { id = reviewer.Id }, reviewer);
         }
@@ -88,21 +66,15 @@ namespace RatersOfTheLostBusiness.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteReviewer(int id)
         {
-            var reviewer = await _context.reviewers.FindAsync(id);
-            if (reviewer == null)
-            {
-                return NotFound();
-            }
-
-            _context.reviewers.Remove(reviewer);
-            await _context.SaveChangesAsync();
+            await _reviewer.Delete(id);
 
             return NoContent();
         }
 
-        private bool ReviewerExists(int id)
+       /* private bool ReviewerExists(int id)
         {
             return _context.reviewers.Any(e => e.Id == id);
         }
+       */
     }
 }

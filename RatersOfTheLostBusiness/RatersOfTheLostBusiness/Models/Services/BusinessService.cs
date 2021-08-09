@@ -23,9 +23,30 @@ namespace RatersOfTheLostBusiness.Models.Services
             await _context.SaveChangesAsync();
             return business;
         }
-        public Task<BusinessDto> GetBusiness(int id) // async
+
+        public async Task<BusinessDto> GetBusiness(int id) // async
         {
-            throw new NotImplementedException(); // LINQ-stuff here
+            //id, name, address, city, state, phone, type
+            // reviwerId, businessId, Rating, rating
+            return await _context.businesses
+                .Select(business => new BusinessDto
+                {
+                    Id = business.Id,
+                    Name = business.Name,
+                    Address = business.Address,
+                    City = business.City,
+                    State = business.State,
+                    PhoneNumber = business.PhoneNumber,
+                    Type = business.Type,
+                    BusinessReviews = business.BusinessReviews
+                        .Select(t => new BusinessReviewDto
+                        {
+                            ReviewerId = t.reviewer.Id,
+                            BusinessId = t.business.Id,
+                            Rating = t.Rating,
+                            Review = t.Review
+                        }).ToList()
+                }).ToListAsync();
         }
         public Task<List<BusinessDto>> GetBusinesses() // async
         {

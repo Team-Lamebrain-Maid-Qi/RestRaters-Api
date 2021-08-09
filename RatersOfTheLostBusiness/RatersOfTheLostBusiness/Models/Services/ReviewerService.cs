@@ -33,7 +33,7 @@ namespace RatersOfTheLostBusiness.Models.Services
             throw new NotImplementedException(); // LINQ-stuff here
         }
 
-        public async Task<ReviewerDto> UpdateReviewers(int id, Reviewer reviewer)
+        public async Task<Reviewer> UpdateReviewers(int id, Reviewer reviewer)
         {
             _context.Entry(reviewer).State = EntityState.Modified;
             await _context.SaveChangesAsync();

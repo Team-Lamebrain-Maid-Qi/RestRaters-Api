@@ -16,6 +16,8 @@ namespace RatersOfTheLostBusiness.Models.DTOs
         public string Review { get; set; }
         public int BusinessId { get; set; }
         public int ReviewerId { get; set; }
+
+        
         
     }
 }

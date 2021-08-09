@@ -30,11 +30,11 @@ namespace RatersOfTheLostBusiness.Models.Services
         {
             throw new NotImplementedException(); // LINQ-stuff here
         }
-        public async Task<BusinessReview> UpdatedBusinessReview(int id, BusinessReview businessreview) // Probably needs to be connected to reviewer
+        public async Task<BusinessReview> UpdatedBusinessReview(int ReviewerId, int BusinessId, BusinessReview businessReview) // Probably needs to be connected to reviewer
         {
-            _context.Entry(businessreview).State = EntityState.Modified;
+            _context.Entry(businessReview).State = EntityState.Modified;
             await _context.SaveChangesAsync();
-            return businessreview;
+            return businessReview;
         }
         public async Task Delete(int id)
         {
