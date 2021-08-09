@@ -9,39 +9,44 @@ using System.Threading.Tasks;
 
 namespace RatersOfTheLostBusiness.Models.Services
 {
-    public class BusinessService : IBusiness
+    public class ReviewerService : IReviewer
     {
-
-        private BusinessDbContext _context;
-        public BusinessService(BusinessDbContext context)
+        public BusinessDbContext _context;
+        public ReviewerService(BusinessDbContext context)
         {
             _context = context;
         }
-        public async Task<Business> Create(Business business)
+        public async Task<Reviewer> Create(Reviewer reviewer)
         {
-            _context.Entry(business).State = EntityState.Added;
+            _context.Entry(reviewer).State = EntityState.Added;
             await _context.SaveChangesAsync();
-            return business;
+            return reviewer;
         }
-        public Task<BusinessDto> GetBusiness(int id) // async
+
+        public Task<ReviewerDto> GetReviewer(int id)
         {
             throw new NotImplementedException(); // LINQ-stuff here
         }
-        public Task<List<BusinessDto>> GetBusinesses() // async
+
+        public Task<List<ReviewerDto>> GetReviewers()
         {
             throw new NotImplementedException(); // LINQ-stuff here
         }
-        public async Task<Business> UpdateBusiness(int id, Business business)
+
+        public async Task<ReviewerDto> UpdateReviewers(int id, Reviewer reviewer)
         {
-            _context.Entry(business).State = EntityState.Modified;
+            _context.Entry(reviewer).State = EntityState.Modified;
             await _context.SaveChangesAsync();
-            return business;
+            return reviewer;
         }
         public async Task Delete(int id)
         {
-            Business business = await _context.businesses.FindAsync(id);
-            _context.Entry(business).State = EntityState.Deleted;
+            ReviewerDto reviewer = await GetReviewer(id);
+            _context.Entry(reviewer).State = EntityState.Deleted;
             await _context.SaveChangesAsync();
         }
+
+        // add review to business
+        // remove review from business
     }
 }
