@@ -9,15 +9,12 @@ namespace RatersOfTheLostBusiness.Models.DTOs
     {
         // CK-FK ReviewerId
    
-        public Business business { get; set; }
-        public Reviewer reviewer { get; set; }
+        public BusinessDto business { get; set; }
+        public ReviewerDto reviewer { get; set; }
 
         public int Rating { get; set; }
         public string Review { get; set; }
         public int BusinessId { get; set; }
         public int ReviewerId { get; set; }
-
-        
-        
     }
 }
