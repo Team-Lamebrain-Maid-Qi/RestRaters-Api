@@ -11,6 +11,7 @@ using RatersOfTheLostBusiness.Data;
 using RatersOfTheLostBusiness.Models;
 using RatersOfTheLostBusiness.Models.Interfaces;
 using RatersOfTheLostBusiness.Models.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,18 +47,41 @@ namespace RatersOfTheLostBusiness
                     Version = "v1",
                 });
             });
+
             services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
                 options.User.RequireUniqueEmail = true;
                 // There are other options like this
+            }).AddEntityFrameworkStores<BusinessDbContext>();
+
+            services.AddAuthentication(options =>
+            {
+                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             })
-            .AddEntityFrameworkStores<BusinessDbContext>();
+                .AddJwtBearer(options =>
+            {
+                // Tell the authenticaion scheme "how/where" to validate the token + secret
+                options.TokenValidationParameters = JwtTokenService.GetValidationParameters(Configuration);
+            });
+
+            services.AddAuthorization(options =>
+            {
+                // Add "Name of Policy", and the Lambda returns a definition
+                options.AddPolicy("create", policy => policy.RequireClaim("permissions", "create"));
+                options.AddPolicy("update", policy => policy.RequireClaim("permissions", "update"));
+                options.AddPolicy("delete", policy => policy.RequireClaim("permissions", "delete"));
+            });
 
             services.AddTransient<IBusiness, BusinessService>();
             services.AddTransient<IReviewer, ReviewerService>();
             services.AddTransient<IBusinessReview, BusinessReviewService>();
             services.AddTransient<IUser, IdentityUserService>();
-            services.AddControllers();
+            services.AddScoped<JwtTokenService>();
+            services.AddControllers().AddNewtonsoftJson(options =>
+        options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+        );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -69,6 +93,10 @@ namespace RatersOfTheLostBusiness
             }
 
             app.UseRouting();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
+
             app.UseSwagger(options => {
                 options.RouteTemplate = "/api/{documentName}/swagger.json";
             });

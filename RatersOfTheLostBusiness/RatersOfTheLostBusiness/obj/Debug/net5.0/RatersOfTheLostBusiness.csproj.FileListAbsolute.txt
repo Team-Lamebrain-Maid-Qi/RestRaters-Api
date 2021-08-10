@@ -268,3 +268,7 @@ C:\Users\qhash\Source\Repos\RestRaters-Api\RatersOfTheLostBusiness\RatersOfTheLo
 C:\Users\qhash\Source\Repos\RestRaters-Api\RatersOfTheLostBusiness\RatersOfTheLostBusiness\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 C:\Users\qhash\Source\Repos\RestRaters-Api\RatersOfTheLostBusiness\RatersOfTheLostBusiness\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
 C:\Users\qhash\Source\Repos\RestRaters-Api\RatersOfTheLostBusiness\RatersOfTheLostBusiness\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\qhash\Source\Repos\RestRaters-Api\RatersOfTheLostBusiness\RatersOfTheLostBusiness\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\qhash\Source\Repos\RestRaters-Api\RatersOfTheLostBusiness\RatersOfTheLostBusiness\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\qhash\Source\Repos\RestRaters-Api\RatersOfTheLostBusiness\RatersOfTheLostBusiness\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\qhash\Source\Repos\RestRaters-Api\RatersOfTheLostBusiness\RatersOfTheLostBusiness\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll

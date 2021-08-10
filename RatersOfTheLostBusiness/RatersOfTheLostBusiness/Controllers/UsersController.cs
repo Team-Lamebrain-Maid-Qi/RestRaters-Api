@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RatersOfTheLostBusiness.Models.DTOs;
 using RatersOfTheLostBusiness.Models.Interfaces;
@@ -36,9 +37,9 @@ namespace RatersOfTheLostBusiness.Controllers
         }
 
         [HttpPost("Login")]
-        public async Task<ActionResult<UserDto>> Login(LoginDto data)
+        public async Task<ActionResult<UserDto>> Authenticate(LoginDto data)
         {
-            var user = await userService.Login(data.Username, data.Password);
+            var user = await userService.Authenticate(data.Username, data.Password);
             if (user == null)
             {
                 return Unauthorized();
@@ -46,6 +47,16 @@ namespace RatersOfTheLostBusiness.Controllers
 
             return user;
         }
-      
+
+        [Authorize(Roles = "administrator")]
+        [HttpGet("me")]
+        public async Task<ActionResult<UserDto>> Me()
+        {
+            // Following the [Authorize] phase, this.User will be ... you.
+            // Put a breakpoint here and inspect to see what's passed to our getUser method
+            
+            return await userService.GetUser(this.User);
+
+        }
     }
 }

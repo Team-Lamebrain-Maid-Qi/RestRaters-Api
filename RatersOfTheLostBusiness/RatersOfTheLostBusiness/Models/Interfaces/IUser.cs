@@ -3,6 +3,7 @@ using RatersOfTheLostBusiness.Models.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace RatersOfTheLostBusiness.Models.Interfaces
@@ -11,6 +12,8 @@ namespace RatersOfTheLostBusiness.Models.Interfaces
     {
         public Task<UserDto> Register(RegisterUserDto data, ModelStateDictionary modelState);
         //public Task<UserDto> Authenticate(string username, string password);
-        public Task<UserDto> Login(string username, string password);
+        public Task<UserDto> Authenticate(string username, string password);
+
+        public Task<UserDto> GetUser(ClaimsPrincipal principal);
     }
 }

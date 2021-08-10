@@ -5,6 +5,7 @@ using RatersOfTheLostBusiness.Models.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace RatersOfTheLostBusiness.Models.Services
@@ -12,18 +13,20 @@ namespace RatersOfTheLostBusiness.Models.Services
     public class IdentityUserService : IUser
     {
         private UserManager<ApplicationUser> userManager;
+        private JwtTokenService tokenService;
 
-        public IdentityUserService(UserManager<ApplicationUser> manager)
+        public IdentityUserService(UserManager<ApplicationUser> manager, JwtTokenService jwtTokenService)
         {
             userManager = manager;
+            tokenService = jwtTokenService;
         }
 
-       /* public Task<UserDto> Authenticate(string username, string password)
+        /* public Task<UserDto> Authenticate(string username, string password)
         {
             throw new NotImplementedException();
         }*/
 
-        public async Task<UserDto> Login(string username, string password)
+        public async Task<UserDto> Authenticate(string username, string password)
         {
             var user = await userManager.FindByNameAsync(username);
 
@@ -33,7 +36,8 @@ namespace RatersOfTheLostBusiness.Models.Services
                 return new UserDto
                 {
                     Id = user.Id,
-                    Username = user.UserName
+                    Username = user.UserName,
+                    Token = await tokenService.GetToken(user, System.TimeSpan.FromMinutes(15))
                 };
             }
 
@@ -71,5 +75,17 @@ namespace RatersOfTheLostBusiness.Models.Services
             }
             return null;
         }
+        public async Task<UserDto> GetUser(ClaimsPrincipal principal)
+        {
+            var user = await userManager.GetUserAsync(principal);
+            Console.WriteLine(user);
+            return new UserDto
+            {
+                Id = user.Id,
+                Username = user.UserName,
+                Token = await tokenService.GetToken(user, System.TimeSpan.FromMinutes(15))
+            };
+        }
+
     }
 }
