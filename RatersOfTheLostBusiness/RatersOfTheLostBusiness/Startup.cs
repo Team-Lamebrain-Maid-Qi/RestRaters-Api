@@ -1,11 +1,14 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 using RatersOfTheLostBusiness.Data;
+using RatersOfTheLostBusiness.Models;
 using RatersOfTheLostBusiness.Models.Interfaces;
 using RatersOfTheLostBusiness.Models.Services;
 using System;
@@ -34,9 +37,26 @@ namespace RatersOfTheLostBusiness
                 options.UseSqlServer(connectionString);
             });
 
+            services.AddSwaggerGen(options =>
+            {
+                // Make sure get the "using Statement"
+                options.SwaggerDoc("v1", new OpenApiInfo()
+                {
+                    Title = "RatersOfTheLostBusiness",
+                    Version = "v1",
+                });
+            });
+            services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+            {
+                options.User.RequireUniqueEmail = true;
+                // There are other options like this
+            })
+            .AddEntityFrameworkStores<BusinessDbContext>();
+
             services.AddTransient<IBusiness, BusinessService>();
             services.AddTransient<IReviewer, ReviewerService>();
             services.AddTransient<IBusinessReview, BusinessReviewService>();
+            services.AddTransient<IUser, IdentityUserService>();
             services.AddControllers();
         }
 
@@ -49,6 +69,9 @@ namespace RatersOfTheLostBusiness
             }
 
             app.UseRouting();
+            app.UseSwagger(options => {
+                options.RouteTemplate = "/api/{documentName}/swagger.json";
+            });
 
             app.UseEndpoints(endpoints =>
             {
@@ -62,6 +85,17 @@ namespace RatersOfTheLostBusiness
                 endpoints.MapGet("/lesgo", async context =>
                 {
                     await context.Response.WriteAsync("Project week is the best!");
+                });
+
+                // Swagger Stuff
+                app.UseSwaggerUI(options => {
+                    options.SwaggerEndpoint("/api/v1/swagger.json", "AsyncInn");
+                    options.RoutePrefix = string.Empty;
+                });
+
+                // Swagger Stuff
+                app.UseSwagger(options => {
+                    options.RouteTemplate = "/api/{documentName}/swagger.json";
                 });
             });
         }

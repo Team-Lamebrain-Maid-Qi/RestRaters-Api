@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using RatersOfTheLostBusiness.Models;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 namespace RatersOfTheLostBusiness.Data
 {
 
-    public class BusinessDbContext : DbContext
+    public class BusinessDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Business> businesses { get; set; }
         public DbSet<Reviewer> reviewers { get; set; }
