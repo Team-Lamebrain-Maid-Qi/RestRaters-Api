@@ -7148,19 +7148,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\gordn\\.nuget\\packages\\": {}
+    "C:\\Users\\qhash\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\gordn\\Documents\\projects\\codefellows\\401net\\RatersOfTheLostBusiness\\RatersOfTheLostBusiness\\RatersOfTheLostBusiness.csproj",
+      "projectUniqueName": "C:\\Users\\qhash\\Source\\Repos\\RestRaters-Api\\RatersOfTheLostBusiness\\RatersOfTheLostBusiness\\RatersOfTheLostBusiness.csproj",
       "projectName": "RatersOfTheLostBusiness",
-      "projectPath": "C:\\Users\\gordn\\Documents\\projects\\codefellows\\401net\\RatersOfTheLostBusiness\\RatersOfTheLostBusiness\\RatersOfTheLostBusiness.csproj",
-      "packagesPath": "C:\\Users\\gordn\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\gordn\\Documents\\projects\\codefellows\\401net\\RatersOfTheLostBusiness\\RatersOfTheLostBusiness\\obj\\",
+      "projectPath": "C:\\Users\\qhash\\Source\\Repos\\RestRaters-Api\\RatersOfTheLostBusiness\\RatersOfTheLostBusiness\\RatersOfTheLostBusiness.csproj",
+      "packagesPath": "C:\\Users\\qhash\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\qhash\\Source\\Repos\\RestRaters-Api\\RatersOfTheLostBusiness\\RatersOfTheLostBusiness\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\gordn\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\qhash\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

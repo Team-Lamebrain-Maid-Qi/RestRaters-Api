@@ -7,6 +7,7 @@ namespace RatersOfTheLostBusiness.Models.DTOs
 {
     public class BusinessDto
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string City { get; set; }
         public string State { get; set; }
@@ -15,5 +16,6 @@ namespace RatersOfTheLostBusiness.Models.DTOs
         public string Type { get; set; }
 
         // Navigation goes here
+        public List<BusinessReviewDto> Reviewers { get; set; }
     }
 }

@@ -46,6 +46,18 @@ namespace RatersOfTheLostBusiness.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("businesses");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Address = "375 Beale Street Suite 300",
+                            City = "San Franciso",
+                            Name = "Twilio",
+                            PhoneNumber = "844-814-4627",
+                            State = "CA",
+                            Type = "Software Service"
+                        });
                 });
 
             modelBuilder.Entity("RatersOfTheLostBusiness.Models.BusinessReview", b =>
@@ -88,21 +100,35 @@ namespace RatersOfTheLostBusiness.Migrations
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.ToTable("reviewers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Email = "JS191@example.com",
+                            First = "John",
+                            Last = "Stewart",
+                            PhoneNumber = "555-555-1221",
+                            UserName = "BestGreenLatern"
+                        });
                 });
 
             modelBuilder.Entity("RatersOfTheLostBusiness.Models.BusinessReview", b =>
                 {
                     b.HasOne("RatersOfTheLostBusiness.Models.Business", "business")
-                        .WithMany()
+                        .WithMany("BusinessReviews")
                         .HasForeignKey("BusinessId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("RatersOfTheLostBusiness.Models.Reviewer", "reviewer")
-                        .WithMany()
+                        .WithMany("BusinessReviews")
                         .HasForeignKey("ReviewerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -110,6 +136,16 @@ namespace RatersOfTheLostBusiness.Migrations
                     b.Navigation("business");
 
                     b.Navigation("reviewer");
+                });
+
+            modelBuilder.Entity("RatersOfTheLostBusiness.Models.Business", b =>
+                {
+                    b.Navigation("BusinessReviews");
+                });
+
+            modelBuilder.Entity("RatersOfTheLostBusiness.Models.Reviewer", b =>
+                {
+                    b.Navigation("BusinessReviews");
                 });
 #pragma warning restore 612, 618
         }

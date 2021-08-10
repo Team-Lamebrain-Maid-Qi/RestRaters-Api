@@ -12,7 +12,8 @@ namespace RatersOfTheLostBusiness.Models
         public string Last { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
-
-        // Navigation goes here
+        public string UserName { get; set; }
+        // Navigation goes here 
+        public List<BusinessReview> BusinessReviews { get; set; }
     }
 }

@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RatersOfTheLostBusiness.Data;
 using RatersOfTheLostBusiness.Models;
+using RatersOfTheLostBusiness.Models.DTOs;
+using RatersOfTheLostBusiness.Models.Interfaces;
 
 namespace RatersOfTheLostBusiness.Controllers
 {
@@ -14,31 +16,25 @@ namespace RatersOfTheLostBusiness.Controllers
     [ApiController]
     public class BusinessesController : ControllerBase
     {
-        private readonly BusinessDbContext _context;
-
-        public BusinessesController(BusinessDbContext context)
+        private readonly IBusiness _business;
+        public BusinessesController(IBusiness b)
         {
-            _context = context;
+            _business = b;
         }
 
         // GET: api/Businesses
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Business>>> Getbusinesses()
+        public async Task<ActionResult<IEnumerable<BusinessDto>>> Getbusinesses()
         {
-            return await _context.businesses.ToListAsync();
+            var list = await _business.GetBusinesses();
+            return Ok(list);
         }
 
         // GET: api/Businesses/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Business>> GetBusiness(int id)
+        public async Task<ActionResult<BusinessDto>> GetBusiness(int id)
         {
-            var business = await _context.businesses.FindAsync(id);
-
-            if (business == null)
-            {
-                return NotFound();
-            }
-
+            BusinessDto business = await _business.GetBusiness(id);
             return business;
         }
 
@@ -51,26 +47,8 @@ namespace RatersOfTheLostBusiness.Controllers
             {
                 return BadRequest();
             }
-
-            _context.Entry(business).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!BusinessExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            var updatedBusiness = await _business.UpdateBusiness(id, business);
+            return Ok(updatedBusiness);
         }
 
         // POST: api/Businesses
@@ -78,9 +56,7 @@ namespace RatersOfTheLostBusiness.Controllers
         [HttpPost]
         public async Task<ActionResult<Business>> PostBusiness(Business business)
         {
-            _context.businesses.Add(business);
-            await _context.SaveChangesAsync();
-
+            await _business.Create(business);
             return CreatedAtAction("GetBusiness", new { id = business.Id }, business);
         }
 
@@ -88,21 +64,13 @@ namespace RatersOfTheLostBusiness.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteBusiness(int id)
         {
-            var business = await _context.businesses.FindAsync(id);
-            if (business == null)
-            {
-                return NotFound();
-            }
-
-            _context.businesses.Remove(business);
-            await _context.SaveChangesAsync();
-
+            await _business.Delete(id);
             return NoContent();
         }
 
-        private bool BusinessExists(int id)
+        /* private bool BusinessExists(int id)
         {
-            return _context.businesses.Any(e => e.Id == id);
-        }
+            return _business.Any(e => e.Id == id);
+        } */
     }
 }
