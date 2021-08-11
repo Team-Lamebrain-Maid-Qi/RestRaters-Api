@@ -10,8 +10,8 @@ using RatersOfTheLostBusiness.Data;
 namespace RatersOfTheLostBusiness.Migrations
 {
     [DbContext(typeof(BusinessDbContext))]
-    [Migration("20210810183547_AddedIdentityRoles")]
-    partial class AddedIdentityRoles
+    [Migration("20210811202052_AddedSeedBRTable")]
+    partial class AddedSeedBRTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -61,6 +61,13 @@ namespace RatersOfTheLostBusiness.Migrations
                             ConcurrencyStamp = "00000000-0000-0000-0000-000000000000",
                             Name = "Editor",
                             NormalizedName = "EDITOR"
+                        },
+                        new
+                        {
+                            Id = "writer",
+                            ConcurrencyStamp = "00000000-0000-0000-0000-000000000000",
+                            Name = "Writer",
+                            NormalizedName = "WRITER"
                         });
                 });
 
@@ -86,6 +93,50 @@ namespace RatersOfTheLostBusiness.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetRoleClaims");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ClaimType = "permissions",
+                            ClaimValue = "create",
+                            RoleId = "administrator"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ClaimType = "permissions",
+                            ClaimValue = "update",
+                            RoleId = "administrator"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            ClaimType = "permissions",
+                            ClaimValue = "delete",
+                            RoleId = "administrator"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            ClaimType = "permissions",
+                            ClaimValue = "create",
+                            RoleId = "editor"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            ClaimType = "permissions",
+                            ClaimValue = "update",
+                            RoleId = "editor"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            ClaimType = "permissions",
+                            ClaimValue = "create",
+                            RoleId = "writer"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -283,8 +334,8 @@ namespace RatersOfTheLostBusiness.Migrations
                     b.Property<int>("ReviewerId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Rating")
-                        .HasColumnType("int");
+                    b.Property<decimal>("Rating")
+                        .HasColumnType("decimal(6,2)");
 
                     b.Property<string>("Review")
                         .HasColumnType("nvarchar(max)");
@@ -294,6 +345,15 @@ namespace RatersOfTheLostBusiness.Migrations
                     b.HasIndex("ReviewerId");
 
                     b.ToTable("businessReviews");
+
+                    b.HasData(
+                        new
+                        {
+                            BusinessId = 1,
+                            ReviewerId = 1,
+                            Rating = 1m,
+                            Review = "Terrible"
+                        });
                 });
 
             modelBuilder.Entity("RatersOfTheLostBusiness.Models.Reviewer", b =>

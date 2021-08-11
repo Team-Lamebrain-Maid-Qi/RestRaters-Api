@@ -38,14 +38,14 @@ namespace RatersOfTheLostBusiness.Models.Services
                     State = business.State,
                     PhoneNumber = business.PhoneNumber,
                     Type = business.Type,
-                    Reviewers = business.BusinessReviews
+                    /*Reviewers = business.BusinessReviews
                         .Select(t => new BusinessReviewDto
                         {
                             ReviewerId = t.reviewer.Id,
                             BusinessId = t.business.Id,
                             Rating = t.Rating,
                             Review = t.Review
-                        }).ToList()
+                        }).ToList()*/
                 }).FirstOrDefaultAsync(s => s.Id == id);
         }
         public async Task<List<BusinessDto>> GetBusinesses() // async
@@ -60,14 +60,14 @@ namespace RatersOfTheLostBusiness.Models.Services
                     State = business.State,
                     PhoneNumber = business.PhoneNumber,
                     Type = business.Type,
-                    Reviewers = business.BusinessReviews
+                    /*Reviewers = business.BusinessReviews
                         .Select(t => new BusinessReviewDto
                         {
                             ReviewerId = t.reviewer.Id,
                             BusinessId = t.business.Id,
                             Rating = t.Rating,
                             Review = t.Review
-                        }).ToList()
+                        }).ToList()*/
                 }).ToListAsync();
         }
         public async Task<Business> UpdateBusiness(int id, Business business)

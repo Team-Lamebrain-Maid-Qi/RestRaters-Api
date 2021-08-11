@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RatersOfTheLostBusiness.Migrations
 {
-    public partial class Identity : Migration
+    public partial class AddedSeedBRTable : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -44,6 +44,41 @@ namespace RatersOfTheLostBusiness.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "businesses",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    City = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    State = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Type = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_businesses", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "reviewers",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    First = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Last = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_reviewers", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -152,6 +187,70 @@ namespace RatersOfTheLostBusiness.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "businessReviews",
+                columns: table => new
+                {
+                    BusinessId = table.Column<int>(type: "int", nullable: false),
+                    ReviewerId = table.Column<int>(type: "int", nullable: false),
+                    Rating = table.Column<decimal>(type: "decimal(6,2)", nullable: false),
+                    Review = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_businessReviews", x => new { x.BusinessId, x.ReviewerId });
+                    table.ForeignKey(
+                        name: "FK_businessReviews_businesses_BusinessId",
+                        column: x => x.BusinessId,
+                        principalTable: "businesses",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_businessReviews_reviewers_ReviewerId",
+                        column: x => x.ReviewerId,
+                        principalTable: "reviewers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[,]
+                {
+                    { "administrator", "00000000-0000-0000-0000-000000000000", "Administrator", "ADMINISTRATOR" },
+                    { "editor", "00000000-0000-0000-0000-000000000000", "Editor", "EDITOR" },
+                    { "writer", "00000000-0000-0000-0000-000000000000", "Writer", "WRITER" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "businesses",
+                columns: new[] { "Id", "Address", "City", "Name", "PhoneNumber", "State", "Type" },
+                values: new object[] { 1, "375 Beale Street Suite 300", "San Franciso", "Twilio", "844-814-4627", "CA", "Software Service" });
+
+            migrationBuilder.InsertData(
+                table: "reviewers",
+                columns: new[] { "Id", "Email", "First", "Last", "PhoneNumber", "UserName" },
+                values: new object[] { 1, "JS191@example.com", "John", "Stewart", "555-555-1221", "BestGreenLatern" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoleClaims",
+                columns: new[] { "Id", "ClaimType", "ClaimValue", "RoleId" },
+                values: new object[,]
+                {
+                    { 1, "permissions", "create", "administrator" },
+                    { 2, "permissions", "update", "administrator" },
+                    { 3, "permissions", "delete", "administrator" },
+                    { 4, "permissions", "create", "editor" },
+                    { 5, "permissions", "update", "editor" },
+                    { 6, "permissions", "create", "writer" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "businessReviews",
+                columns: new[] { "BusinessId", "ReviewerId", "Rating", "Review" },
+                values: new object[] { 1, 1, 1m, "Terrible" });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -190,6 +289,11 @@ namespace RatersOfTheLostBusiness.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_businessReviews_ReviewerId",
+                table: "businessReviews",
+                column: "ReviewerId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -210,10 +314,19 @@ namespace RatersOfTheLostBusiness.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "businessReviews");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "businesses");
+
+            migrationBuilder.DropTable(
+                name: "reviewers");
         }
     }
 }

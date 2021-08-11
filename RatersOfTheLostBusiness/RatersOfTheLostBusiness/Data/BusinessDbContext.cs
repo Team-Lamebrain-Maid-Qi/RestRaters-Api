@@ -50,6 +50,17 @@ namespace RatersOfTheLostBusiness.Data
                     UserName = "BestGreenLatern"
                 }
             );
+            // Rating, Review, busId, Revid
+            modelBuilder.Entity<BusinessReview>().HasData(
+                new BusinessReview
+                {
+                    Rating = 1,
+                    Review = "Terrible",
+                    BusinessId = 1,
+                    ReviewerId = 1
+                }
+            );
+            // Joint Table Key
             modelBuilder.Entity<BusinessReview>().HasKey(
                 businessReview => new { businessReview.BusinessId, businessReview.ReviewerId }
                 );
