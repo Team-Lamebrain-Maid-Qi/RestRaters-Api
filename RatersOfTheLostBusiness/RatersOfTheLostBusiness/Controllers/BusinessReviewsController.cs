@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -42,6 +43,7 @@ namespace RatersOfTheLostBusiness.Controllers
 
         // PUT: api/BusinessReviews/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutBusinessReview(int ReviewerId, int BusinessId, BusinessReview businessReview)
         {
@@ -56,6 +58,7 @@ namespace RatersOfTheLostBusiness.Controllers
 
         // POST: api/BusinessReviews
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<BusinessReview>> PostBusinessReview(BusinessReview businessReview)
         {
@@ -65,6 +68,7 @@ namespace RatersOfTheLostBusiness.Controllers
         }
 
         // DELETE: api/BusinessReviews/5
+        [Authorize(Roles = "administrator")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteBusinessReview(int id)
         {
