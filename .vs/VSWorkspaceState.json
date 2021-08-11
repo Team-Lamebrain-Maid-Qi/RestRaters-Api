@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\RatersOfTheLostBusiness",
+    "\\RatersOfTheLostBusiness\\RatersOfTheLostBusiness",
+    "\\RatersOfTheLostBusiness\\RatersOfTheLostBusiness\\Controllers"
   ],
-  "SelectedNode": "\\RatersOfTheLostBusiness.sln",
+  "SelectedNode": "\\RatersOfTheLostBusiness\\RatersOfTheLostBusiness\\Controllers\\UsersController.cs",
   "PreviewInSolutionExplorer": false
 }
