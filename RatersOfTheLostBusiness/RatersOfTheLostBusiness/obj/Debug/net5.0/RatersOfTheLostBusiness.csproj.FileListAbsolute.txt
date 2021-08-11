@@ -258,3 +258,17 @@ C:\Users\qhash\Source\Repos\RestRaters-Api\RatersOfTheLostBusiness\RatersOfTheLo
 C:\Users\qhash\Source\Repos\RestRaters-Api\RatersOfTheLostBusiness\RatersOfTheLostBusiness\obj\Debug\net5.0\RatersOfTheLostBusiness.RazorTargetAssemblyInfo.cache
 C:\Users\qhash\Source\Repos\RestRaters-Api\RatersOfTheLostBusiness\RatersOfTheLostBusiness\obj\Debug\net5.0\RatersOfTheLostBusiness.csproj.CopyComplete
 C:\Users\qhash\Source\Repos\RestRaters-Api\RatersOfTheLostBusiness\RatersOfTheLostBusiness\obj\Debug\net5.0\RatersOfTheLostBusiness.genruntimeconfig.cache
+C:\Users\qhash\Source\Repos\RestRaters-Api\RatersOfTheLostBusiness\RatersOfTheLostBusiness\bin\Debug\net5.0\Microsoft.OpenApi.dll
+C:\Users\qhash\Source\Repos\RestRaters-Api\RatersOfTheLostBusiness\RatersOfTheLostBusiness\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\qhash\Source\Repos\RestRaters-Api\RatersOfTheLostBusiness\RatersOfTheLostBusiness\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\qhash\Source\Repos\RestRaters-Api\RatersOfTheLostBusiness\RatersOfTheLostBusiness\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\qhash\Source\Repos\RestRaters-Api\RatersOfTheLostBusiness\RatersOfTheLostBusiness\obj\Debug\net5.0\RatersOfTheLostBusiness.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\qhash\Source\Repos\RestRaters-Api\RatersOfTheLostBusiness\RatersOfTheLostBusiness\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\qhash\Source\Repos\RestRaters-Api\RatersOfTheLostBusiness\RatersOfTheLostBusiness\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\qhash\Source\Repos\RestRaters-Api\RatersOfTheLostBusiness\RatersOfTheLostBusiness\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\qhash\Source\Repos\RestRaters-Api\RatersOfTheLostBusiness\RatersOfTheLostBusiness\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\qhash\Source\Repos\RestRaters-Api\RatersOfTheLostBusiness\RatersOfTheLostBusiness\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\qhash\Source\Repos\RestRaters-Api\RatersOfTheLostBusiness\RatersOfTheLostBusiness\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\qhash\Source\Repos\RestRaters-Api\RatersOfTheLostBusiness\RatersOfTheLostBusiness\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\qhash\Source\Repos\RestRaters-Api\RatersOfTheLostBusiness\RatersOfTheLostBusiness\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\qhash\Source\Repos\RestRaters-Api\RatersOfTheLostBusiness\RatersOfTheLostBusiness\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll

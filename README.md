@@ -10,3 +10,6 @@ On login shows a positive review for a random business. This allows reviews to b
 
 ### UML Model
 ![Schema](Schema.JPG)
+
+### Data Flow
+![Data Flow](Midterm-Domain.png)
