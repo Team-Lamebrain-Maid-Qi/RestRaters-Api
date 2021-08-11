@@ -17,6 +17,10 @@ namespace RatersOfTheLostBusiness.Models.Interfaces
         // Get One by ID
         Task<BusinessDto> GetBusiness(int id);
 
+
+        //GET BUSINESS BY NAME
+        Task<BusinessSmsDto> GetBusinessByName(string name);
+
         // Update
         Task<Business> UpdateBusiness(int id, Business business);
 
