@@ -39,6 +39,7 @@ namespace RatersOfTheLostBusiness.Controllers
             return business;
         }
 
+
         //GET BUSINESS BY NAME
         [HttpGet("Bussinesses/{name}")]
         public async Task<ActionResult<BusinessSmsDto>> GetBusinessByName(string name)
