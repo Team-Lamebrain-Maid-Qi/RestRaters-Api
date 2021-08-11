@@ -55,7 +55,7 @@ namespace RatersOfTheLostBusiness.Controllers
 
         // POST: api/Businesses
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        //[Authorize]
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<Business>> PostBusiness(Business business)
         {

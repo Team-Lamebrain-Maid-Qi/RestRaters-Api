@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -41,6 +42,7 @@ namespace RatersOfTheLostBusiness.Controllers
 
         // PUT: api/Reviewers/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutReviewer(int id, Reviewer reviewer) // Maybe Dto?
         {
@@ -54,6 +56,7 @@ namespace RatersOfTheLostBusiness.Controllers
 
         // POST: api/Reviewers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<ReviewerDto>> PostReviewer(Reviewer reviewer)
         {
@@ -63,6 +66,7 @@ namespace RatersOfTheLostBusiness.Controllers
         }
 
         // DELETE: api/Reviewers/5
+        [Authorize(Roles = "administrator")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteReviewer(int id)
         {
