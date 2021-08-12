@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\kyleketcham\\Source\\Repos\\Team-Lamebrain-Maid-Qi\\RestRaters-Api\\RatersOfTheLostBusiness\\RatersOfTheLostBusiness\\RatersOfTheLostBusiness.csproj": {}
+    "C:\\Users\\kyleketcham\\source\\repos\\Team-Lamebrain-Maid-Qi\\RestRaters-Api\\RatersOfTheLostBusiness\\RatersOfTheLostBusiness\\RatersOfTheLostBusiness.csproj": {}
   },
   "projects": {
-    "C:\\Users\\kyleketcham\\Source\\Repos\\Team-Lamebrain-Maid-Qi\\RestRaters-Api\\RatersOfTheLostBusiness\\RatersOfTheLostBusiness\\RatersOfTheLostBusiness.csproj": {
+    "C:\\Users\\kyleketcham\\source\\repos\\Team-Lamebrain-Maid-Qi\\RestRaters-Api\\RatersOfTheLostBusiness\\RatersOfTheLostBusiness\\RatersOfTheLostBusiness.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kyleketcham\\Source\\Repos\\Team-Lamebrain-Maid-Qi\\RestRaters-Api\\RatersOfTheLostBusiness\\RatersOfTheLostBusiness\\RatersOfTheLostBusiness.csproj",
+        "projectUniqueName": "C:\\Users\\kyleketcham\\source\\repos\\Team-Lamebrain-Maid-Qi\\RestRaters-Api\\RatersOfTheLostBusiness\\RatersOfTheLostBusiness\\RatersOfTheLostBusiness.csproj",
         "projectName": "RatersOfTheLostBusiness",
-        "projectPath": "C:\\Users\\kyleketcham\\Source\\Repos\\Team-Lamebrain-Maid-Qi\\RestRaters-Api\\RatersOfTheLostBusiness\\RatersOfTheLostBusiness\\RatersOfTheLostBusiness.csproj",
+        "projectPath": "C:\\Users\\kyleketcham\\source\\repos\\Team-Lamebrain-Maid-Qi\\RestRaters-Api\\RatersOfTheLostBusiness\\RatersOfTheLostBusiness\\RatersOfTheLostBusiness.csproj",
         "packagesPath": "C:\\Users\\kyleketcham\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kyleketcham\\Source\\Repos\\Team-Lamebrain-Maid-Qi\\RestRaters-Api\\RatersOfTheLostBusiness\\RatersOfTheLostBusiness\\obj\\",
+        "outputPath": "C:\\Users\\kyleketcham\\source\\repos\\Team-Lamebrain-Maid-Qi\\RestRaters-Api\\RatersOfTheLostBusiness\\RatersOfTheLostBusiness\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -43,10 +43,6 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
-            "Microsoft.AspNet.Identity.EntityFramework": {
-              "target": "Package",
-              "version": "[2.2.3, )"
-            },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[5.0.9, )"
@@ -100,7 +96,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.303\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

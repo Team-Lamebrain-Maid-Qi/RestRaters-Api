@@ -281,11 +281,7 @@ C:\Users\kyleketcham\Source\Repos\Team-Lamebrain-Maid-Qi\RestRaters-Api\RatersOf
 C:\Users\kyleketcham\Source\Repos\Team-Lamebrain-Maid-Qi\RestRaters-Api\RatersOfTheLostBusiness\RatersOfTheLostBusiness\bin\Debug\net5.0\RatersOfTheLostBusiness.dll
 C:\Users\kyleketcham\Source\Repos\Team-Lamebrain-Maid-Qi\RestRaters-Api\RatersOfTheLostBusiness\RatersOfTheLostBusiness\bin\Debug\net5.0\ref\RatersOfTheLostBusiness.dll
 C:\Users\kyleketcham\Source\Repos\Team-Lamebrain-Maid-Qi\RestRaters-Api\RatersOfTheLostBusiness\RatersOfTheLostBusiness\bin\Debug\net5.0\RatersOfTheLostBusiness.pdb
-C:\Users\kyleketcham\Source\Repos\Team-Lamebrain-Maid-Qi\RestRaters-Api\RatersOfTheLostBusiness\RatersOfTheLostBusiness\bin\Debug\net5.0\EntityFramework.SqlServer.dll
-C:\Users\kyleketcham\Source\Repos\Team-Lamebrain-Maid-Qi\RestRaters-Api\RatersOfTheLostBusiness\RatersOfTheLostBusiness\bin\Debug\net5.0\EntityFramework.dll
 C:\Users\kyleketcham\Source\Repos\Team-Lamebrain-Maid-Qi\RestRaters-Api\RatersOfTheLostBusiness\RatersOfTheLostBusiness\bin\Debug\net5.0\Humanizer.dll
-C:\Users\kyleketcham\Source\Repos\Team-Lamebrain-Maid-Qi\RestRaters-Api\RatersOfTheLostBusiness\RatersOfTheLostBusiness\bin\Debug\net5.0\Microsoft.AspNet.Identity.Core.dll
-C:\Users\kyleketcham\Source\Repos\Team-Lamebrain-Maid-Qi\RestRaters-Api\RatersOfTheLostBusiness\RatersOfTheLostBusiness\bin\Debug\net5.0\Microsoft.AspNet.Identity.EntityFramework.dll
 C:\Users\kyleketcham\Source\Repos\Team-Lamebrain-Maid-Qi\RestRaters-Api\RatersOfTheLostBusiness\RatersOfTheLostBusiness\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\kyleketcham\Source\Repos\Team-Lamebrain-Maid-Qi\RestRaters-Api\RatersOfTheLostBusiness\RatersOfTheLostBusiness\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
 C:\Users\kyleketcham\Source\Repos\Team-Lamebrain-Maid-Qi\RestRaters-Api\RatersOfTheLostBusiness\RatersOfTheLostBusiness\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
