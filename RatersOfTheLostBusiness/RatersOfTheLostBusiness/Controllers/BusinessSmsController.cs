@@ -39,14 +39,17 @@ namespace Lab12.Controllers
             // and set the environment variables. See http://twil.io/secure
             //TODO IN FUTURE: ADD TOKENS/PHONE NUMBERS TO GITIGNORE
 
-            //TOKENS
-            string accountSid = "AC912cb5fe9add6927112bb9378db954a6";
-            string authToken = "c44804d73bc069d52ba02e7bc168766c";
+
+            //UPDATED
+            string accountSid = Environment.GetEnvironmentVariable("TWILIO_ACCOUNT_SID");
+            string authToken = Environment.GetEnvironmentVariable("TWILIO_AUTH_TOKEN");
+
+            //IF THE ABOVE DOESN'T WORK:
+            //string accountSid = "TWILIO #";
+            //string authToken = "TWILIO #";
 
             //PHONE NUMBERS
             var miriam = new Twilio.Types.PhoneNumber("+12064033272");
-            var dave = new Twilio.Types.PhoneNumber("+12065181451");
-            var q = new Twilio.Types.PhoneNumber("+12062359161");
             var twilio = new Twilio.Types.PhoneNumber("+12062223455");
 
             TwilioClient.Init(accountSid, authToken);
