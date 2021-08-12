@@ -1,5 +1,9 @@
 {
   "dependencies": {
+    "mssql1": {
+      "restored": true,
+      "restoreTime": "2021-08-11T23:09:25.4591019Z"
+    },
     "apis1": {
       "restored": true,
       "restoreTime": "2021-08-11T21:13:23.5471093Z"
@@ -11,10 +15,20 @@
       "Type": "resourceGroup",
       "Value": "RatersBusiness"
     },
+    "mssql1.subscriptionId": {
+      "Name": "mssql1.subscriptionId",
+      "Type": "subscription",
+      "Value": "152f93e6-9793-48d9-a5c4-ba842cd69fdd"
+    },
     "apis1.subscriptionId": {
       "Name": "apis1.subscriptionId",
       "Type": "subscription",
       "Value": "152f93e6-9793-48d9-a5c4-ba842cd69fdd"
+    },
+    "mssql1.resourceGroupName": {
+      "Name": "mssql1.resourceGroupName",
+      "Type": "resourceGroup",
+      "Value": "RatersBusiness"
     }
   }
 }
