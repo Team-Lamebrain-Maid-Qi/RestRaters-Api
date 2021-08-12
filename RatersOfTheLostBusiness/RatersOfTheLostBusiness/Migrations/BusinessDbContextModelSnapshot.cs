@@ -332,8 +332,8 @@ namespace RatersOfTheLostBusiness.Migrations
                     b.Property<int>("ReviewerId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Rating")
-                        .HasColumnType("int");
+                    b.Property<decimal>("Rating")
+                        .HasColumnType("decimal(6,2)");
 
                     b.Property<string>("Review")
                         .HasColumnType("nvarchar(max)");
@@ -343,6 +343,15 @@ namespace RatersOfTheLostBusiness.Migrations
                     b.HasIndex("ReviewerId");
 
                     b.ToTable("businessReviews");
+
+                    b.HasData(
+                        new
+                        {
+                            BusinessId = 1,
+                            ReviewerId = 1,
+                            Rating = 1m,
+                            Review = "Terrible"
+                        });
                 });
 
             modelBuilder.Entity("RatersOfTheLostBusiness.Models.Reviewer", b =>
