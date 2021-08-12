@@ -26,19 +26,30 @@ namespace RatersOfTheLostBusiness.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            //id, name, city, state, address, phone, type
+            // Businesses
+            // id, name, city, state, address, phone, type
             modelBuilder.Entity<Business>().HasData(
                 new Business
                 {
-                    Id = 1,
-                    Name = "Twilio",
-                    Address = "375 Beale Street Suite 300",
-                    City = "San Franciso",
-                    State = "CA",
-                    PhoneNumber = "844-814-4627",
-                    Type = "Software Service"
+                    Id = 1, Name = "Twilio", Address = "375 Beale Street Suite 300", City = "San Franciso", State = "CA", PhoneNumber = "844-814-4627", Type = "Software Service"
+                },
+               new Business
+                {
+                    Id = 2, Name = "Margaritas", Address = "400 N 140th Street", City = "NorthGate", State = "WA", PhoneNumber = "844-814-4628", Type = "Restaurant"
+                },
+               new Business
+                {
+                    Id = 3, Name = "TjMinn", Address = "96 Main Street", City = "Greenville", State = "WY", PhoneNumber = "844-814-4623", Type = "Retail"
+                },
+               new Business
+                {
+                    Id = 4, Name = "GeekGeeks", Address = "720 2nd Avenue", City = "Seattle", State = "WA", PhoneNumber = "844-814-4621", Type = "Tech Services"
                 }
+
+
             );
+
+            // People
             // Id, First, Last, Email, PhoneNumber
             modelBuilder.Entity<Reviewer>().HasData(
                 new Reviewer
@@ -49,8 +60,19 @@ namespace RatersOfTheLostBusiness.Data
                     Email = "JS191@example.com",
                     PhoneNumber = "555-555-1221",
                     UserName = "BestGreenLatern"
-                }
+                },
+                    new Reviewer
+                    {
+                        Id = 2,
+                        First = "Stacy",
+                        Last = "McGuire",
+                        Email = "SM191@example.com",
+                        PhoneNumber = "555-555-1220",
+                        UserName = "LittleMissStacy"
+                    }
             );
+
+            // Reviews
             // Rating, Review, busId, Revid
             modelBuilder.Entity<BusinessReview>().HasData(
                 new BusinessReview
@@ -59,7 +81,28 @@ namespace RatersOfTheLostBusiness.Data
                     Review = "Terrible",
                     BusinessId = 1,
                     ReviewerId = 1
-                }
+                },
+                 new BusinessReview
+                  {
+                    Rating = 2,
+                    Review = "The name says it all TjMaxx? more like TjMinn",
+                    BusinessId = 3,
+                    ReviewerId = 2
+                  },
+                 new BusinessReview
+                  {
+                    Rating = 4,
+                    Review = "Margaritas so good you get 4",
+                    BusinessId = 2,
+                    ReviewerId = 2
+                 }, 
+                 new BusinessReview
+                 {
+                     Rating = 3,
+                     Review = "Way better service than those geeks at best buy",
+                     BusinessId = 4,
+                     ReviewerId = 1
+                 }
             );
             // Joint Table Key
             modelBuilder.Entity<BusinessReview>().HasKey(

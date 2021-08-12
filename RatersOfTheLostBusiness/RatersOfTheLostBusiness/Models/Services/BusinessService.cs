@@ -12,7 +12,7 @@ namespace RatersOfTheLostBusiness.Models.Services
     public class BusinessService : IBusiness
     {
 
-        private BusinessDbContext _context;
+        private readonly BusinessDbContext _context;
         public BusinessService(BusinessDbContext context)
         {
             _context = context;
@@ -57,8 +57,13 @@ namespace RatersOfTheLostBusiness.Models.Services
                 {
                     Name = b.Name,
                     Address = b.Address,
-                    //FIX: This needs to changed to rating
-                    Rating = b.City
+                    //ADD MAYBE: CUMULATIVE RATING
+                    Review = b.BusinessReviews
+                    .Select(br => new BusinessReviewDto
+                    {
+                        Rating = br.Rating,
+                        Review = br.Review
+                    }).ToString()
                 }).FirstOrDefaultAsync(b => b.Name == name);
         }
         public async Task<List<BusinessDto>> GetBusinesses() // async
