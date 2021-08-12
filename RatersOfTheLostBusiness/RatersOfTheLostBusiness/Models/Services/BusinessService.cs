@@ -48,6 +48,19 @@ namespace RatersOfTheLostBusiness.Models.Services
                         }).ToList()*/
                 }).FirstOrDefaultAsync(s => s.Id == id);
         }
+
+        //GET BUSINESS BY NAME
+        public async Task<BusinessSmsDto> GetBusinessByName(string name)
+        {
+            return await _context.businesses
+                .Select(b => new BusinessSmsDto
+                {
+                    Name = b.Name,
+                    Address = b.Address,
+                    //FIX: This needs to changed to rating
+                    Rating = b.City
+                }).FirstOrDefaultAsync(b => b.Name == name);
+        }
         public async Task<List<BusinessDto>> GetBusinesses() // async
         {
             return await _context.businesses

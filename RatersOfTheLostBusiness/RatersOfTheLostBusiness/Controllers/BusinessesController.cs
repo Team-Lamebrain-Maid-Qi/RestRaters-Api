@@ -39,6 +39,15 @@ namespace RatersOfTheLostBusiness.Controllers
             return business;
         }
 
+
+        //GET BUSINESS BY NAME
+        [HttpGet("Bussinesses/{name}")]
+        public async Task<ActionResult<BusinessSmsDto>> GetBusinessByName(string name)
+        {
+            BusinessSmsDto business = await _business.GetBusinessByName(name);
+            return business;
+        }
+
         // PUT: api/Businesses/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [Authorize]
