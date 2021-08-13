@@ -18,9 +18,28 @@ namespace TestProject1
         {
             var business = await CanPost();
             var service = new BusinessService(_context);
+            var result = await service.GetBusiness(business.Id);
+
+            Assert.NotNull( result);
+        }
+
+        [Fact]
+        public async Task CanGetById()
+        {
+            var business = await CanPost();
+            var service = new BusinessService(_context);
             var result = await service.GetBusiness(3);
 
             Assert.Equal(3, result.Id);
+        }
+        [Fact]
+        public async Task CanGetByName()
+        {
+            var business = await CanPost();
+            var service = new BusinessService(_context);
+            var result = await service.GetBusinessByName("TobbyLobby");
+
+            Assert.Equal("TobbyLobby", result.Name);
         }
     }
 }
