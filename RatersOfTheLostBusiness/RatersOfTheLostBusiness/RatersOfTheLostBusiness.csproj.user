@@ -10,5 +10,6 @@
     <WebStackScaffolding_LayoutPageFile />
     <WebStackScaffolding_DbContextTypeFullName>RatersOfTheLostBusiness.Data.BusinessDbContext</WebStackScaffolding_DbContextTypeFullName>
     <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
+    <NameOfLastUsedPublishProfile>C:\Users\kyleketcham\source\repos\Team-Lamebrain-Maid-Qi\RestRaters-Api\RatersOfTheLostBusiness\RatersOfTheLostBusiness\Properties\PublishProfiles\RatersOfTheLostBusiness20210813083125 - Web Deploy.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>

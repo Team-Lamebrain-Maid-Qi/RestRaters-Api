@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.EntityFrameworkCore;
+using RatersOfTheLostBusiness.Data;
 using RatersOfTheLostBusiness.Models.DTOs;
 using RatersOfTheLostBusiness.Models.Interfaces;
 using System;
@@ -12,13 +14,15 @@ namespace RatersOfTheLostBusiness.Models.Services
 {
     public class IdentityUserService : IUser
     {
+        private readonly BusinessDbContext _context;
         private UserManager<ApplicationUser> userManager;
         private JwtTokenService tokenService;
 
-        public IdentityUserService(UserManager<ApplicationUser> manager, JwtTokenService jwtTokenService)
+        public IdentityUserService(UserManager<ApplicationUser> manager, JwtTokenService jwtTokenService, BusinessDbContext context)
         {
             userManager = manager;
             tokenService = jwtTokenService;
+            _context = context;
         }
 
         /* public Task<UserDto> Authenticate(string username, string password)
@@ -33,10 +37,15 @@ namespace RatersOfTheLostBusiness.Models.Services
             // Is the password legit?
             if (await userManager.CheckPasswordAsync(user, password))
             {
+                //Write a linq query that returns reviewerId
+                var rI = await _context.reviewers.FirstOrDefaultAsync(r => r.UserName == username);
                 return new UserDto
                 {
                     Id = user.Id,
                     Username = user.UserName,
+                    //ADD LINQ QUERY to get the reviewer record
+                    ReviewerID = rI.Id,
+                    Reviewer = rI,
                     Token = await tokenService.GetToken(user, System.TimeSpan.FromMinutes(15))
                 };
             }

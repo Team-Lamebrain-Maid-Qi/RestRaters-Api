@@ -10,8 +10,8 @@ using RatersOfTheLostBusiness.Data;
 namespace RatersOfTheLostBusiness.Migrations
 {
     [DbContext(typeof(BusinessDbContext))]
-    [Migration("20210811202052_AddedSeedBRTable")]
-    partial class AddedSeedBRTable
+    [Migration("20210813152948_New")]
+    partial class New
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -323,6 +323,36 @@ namespace RatersOfTheLostBusiness.Migrations
                             PhoneNumber = "844-814-4627",
                             State = "CA",
                             Type = "Software Service"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Address = "400 N 140th Street",
+                            City = "NorthGate",
+                            Name = "Margaritas",
+                            PhoneNumber = "844-814-4628",
+                            State = "WA",
+                            Type = "Restaurant"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Address = "96 Main Street",
+                            City = "Greenville",
+                            Name = "TjMinn",
+                            PhoneNumber = "844-814-4623",
+                            State = "WY",
+                            Type = "Retail"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Address = "720 2nd Avenue",
+                            City = "Seattle",
+                            Name = "GeekGeeks",
+                            PhoneNumber = "844-814-4621",
+                            State = "WA",
+                            Type = "Tech Services"
                         });
                 });
 
@@ -332,6 +362,9 @@ namespace RatersOfTheLostBusiness.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("ReviewerId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Id")
                         .HasColumnType("int");
 
                     b.Property<decimal>("Rating")
@@ -351,8 +384,33 @@ namespace RatersOfTheLostBusiness.Migrations
                         {
                             BusinessId = 1,
                             ReviewerId = 1,
+                            Id = 1,
                             Rating = 1m,
                             Review = "Terrible"
+                        },
+                        new
+                        {
+                            BusinessId = 3,
+                            ReviewerId = 2,
+                            Id = 2,
+                            Rating = 2m,
+                            Review = "The name says it all TjMaxx? more like TjMinn"
+                        },
+                        new
+                        {
+                            BusinessId = 2,
+                            ReviewerId = 2,
+                            Id = 3,
+                            Rating = 4m,
+                            Review = "Margaritas so good you get 4"
+                        },
+                        new
+                        {
+                            BusinessId = 4,
+                            ReviewerId = 1,
+                            Id = 4,
+                            Rating = 3m,
+                            Review = "Way better service than those geeks at best buy"
                         });
                 });
 
@@ -391,6 +449,15 @@ namespace RatersOfTheLostBusiness.Migrations
                             Last = "Stewart",
                             PhoneNumber = "555-555-1221",
                             UserName = "BestGreenLatern"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Email = "SM191@example.com",
+                            First = "Stacy",
+                            Last = "McGuire",
+                            PhoneNumber = "555-555-1220",
+                            UserName = "LittleMissStacy"
                         });
                 });
 

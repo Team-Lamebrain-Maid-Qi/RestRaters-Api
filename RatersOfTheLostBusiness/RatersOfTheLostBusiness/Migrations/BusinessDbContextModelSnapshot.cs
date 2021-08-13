@@ -362,6 +362,9 @@ namespace RatersOfTheLostBusiness.Migrations
                     b.Property<int>("ReviewerId")
                         .HasColumnType("int");
 
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
                     b.Property<decimal>("Rating")
                         .HasColumnType("decimal(6,2)");
 
@@ -379,6 +382,7 @@ namespace RatersOfTheLostBusiness.Migrations
                         {
                             BusinessId = 1,
                             ReviewerId = 1,
+                            Id = 1,
                             Rating = 1m,
                             Review = "Terrible"
                         },
@@ -386,6 +390,7 @@ namespace RatersOfTheLostBusiness.Migrations
                         {
                             BusinessId = 3,
                             ReviewerId = 2,
+                            Id = 2,
                             Rating = 2m,
                             Review = "The name says it all TjMaxx? more like TjMinn"
                         },
@@ -393,6 +398,7 @@ namespace RatersOfTheLostBusiness.Migrations
                         {
                             BusinessId = 2,
                             ReviewerId = 2,
+                            Id = 3,
                             Rating = 4m,
                             Review = "Margaritas so good you get 4"
                         },
@@ -400,6 +406,7 @@ namespace RatersOfTheLostBusiness.Migrations
                         {
                             BusinessId = 4,
                             ReviewerId = 1,
+                            Id = 4,
                             Rating = 3m,
                             Review = "Way better service than those geeks at best buy"
                         });

@@ -31,6 +31,7 @@ namespace RatersOfTheLostBusiness.Models.Services
             return await _context.businessReviews
                 .Select(businessReview => new BusinessReviewDto
                 {
+                    Id = businessReview.Id,
                     BusinessId = businessReview.BusinessId,
                     ReviewerId = businessReview.ReviewerId,
                     Review = businessReview.Review,
@@ -38,19 +39,19 @@ namespace RatersOfTheLostBusiness.Models.Services
                     reviewer = new ReviewerDto
                     {
                         Id = businessReview.reviewer.Id,
-                        First = businessReview.reviewer.First,
-                        Last = businessReview.reviewer.Last,
-                        Email = businessReview.reviewer.Email,
-                        PhoneNumber = businessReview.reviewer.PhoneNumber,
                         UserName = businessReview.reviewer.UserName,
                     },
                     business = new BusinessDto
                     {
                         Id = businessReview.business.Id,
                         Name = businessReview.business.Name,
+                        City = businessReview.business.City,
+                        State = businessReview.business.State,
+                        Address = businessReview.business.Address,
+                        PhoneNumber = businessReview.business.PhoneNumber,
                         Type = businessReview.business.Type
                     }
-                }).FirstOrDefaultAsync();
+                }).FirstOrDefaultAsync(br => br.Id == id);
 
         }
         public async Task<List<BusinessReviewDto>> GetBusinessReviews() // async
@@ -58,6 +59,7 @@ namespace RatersOfTheLostBusiness.Models.Services
             return await _context.businessReviews
                 .Select(businessReview => new BusinessReviewDto
                 {
+                    Id = businessReview.Id,
                     BusinessId = businessReview.BusinessId,
                     ReviewerId = businessReview.ReviewerId,
                     Review = businessReview.Review,
@@ -65,16 +67,16 @@ namespace RatersOfTheLostBusiness.Models.Services
                     reviewer = new ReviewerDto
                     {
                         Id = businessReview.reviewer.Id,
-                        First = businessReview.reviewer.First,
-                        Last = businessReview.reviewer.Last,
-                        Email = businessReview.reviewer.Email,
-                        PhoneNumber = businessReview.reviewer.PhoneNumber,
                         UserName = businessReview.reviewer.UserName,
                     },
                     business = new BusinessDto
                     {
                         Id = businessReview.business.Id,
                         Name = businessReview.business.Name,
+                        City = businessReview.business.City,
+                        State = businessReview.business.State,
+                        Address = businessReview.business.Address,
+                        PhoneNumber = businessReview.business.PhoneNumber,
                         Type = businessReview.business.Type
                     }
                 }).ToListAsync();
