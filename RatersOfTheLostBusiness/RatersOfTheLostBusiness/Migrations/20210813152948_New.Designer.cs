@@ -10,7 +10,7 @@ using RatersOfTheLostBusiness.Data;
 namespace RatersOfTheLostBusiness.Migrations
 {
     [DbContext(typeof(BusinessDbContext))]
-    [Migration("20210813145212_New")]
+    [Migration("20210813152948_New")]
     partial class New
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
