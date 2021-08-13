@@ -37,6 +37,7 @@ namespace RatersOfTheLostBusiness.Controllers
         {
             BusinessDto business = await _business.GetBusiness(id);
             return business;
+            
         }
 
 

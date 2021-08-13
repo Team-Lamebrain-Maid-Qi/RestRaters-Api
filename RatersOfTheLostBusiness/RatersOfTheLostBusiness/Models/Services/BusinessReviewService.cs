@@ -38,16 +38,16 @@ namespace RatersOfTheLostBusiness.Models.Services
                     reviewer = new ReviewerDto
                     {
                         Id = businessReview.reviewer.Id,
-                        First = businessReview.reviewer.First,
-                        Last = businessReview.reviewer.Last,
-                        Email = businessReview.reviewer.Email,
-                        PhoneNumber = businessReview.reviewer.PhoneNumber,
                         UserName = businessReview.reviewer.UserName,
                     },
                     business = new BusinessDto
                     {
                         Id = businessReview.business.Id,
                         Name = businessReview.business.Name,
+                        City = businessReview.business.City,
+                        State = businessReview.business.State,
+                        Address = businessReview.business.Address,
+                        PhoneNumber = businessReview.business.PhoneNumber,
                         Type = businessReview.business.Type
                     }
                 }).FirstOrDefaultAsync();
@@ -65,16 +65,16 @@ namespace RatersOfTheLostBusiness.Models.Services
                     reviewer = new ReviewerDto
                     {
                         Id = businessReview.reviewer.Id,
-                        First = businessReview.reviewer.First,
-                        Last = businessReview.reviewer.Last,
-                        Email = businessReview.reviewer.Email,
-                        PhoneNumber = businessReview.reviewer.PhoneNumber,
                         UserName = businessReview.reviewer.UserName,
                     },
                     business = new BusinessDto
                     {
                         Id = businessReview.business.Id,
                         Name = businessReview.business.Name,
+                        City = businessReview.business.City,
+                        State = businessReview.business.State,
+                        Address = businessReview.business.Address,
+                        PhoneNumber = businessReview.business.PhoneNumber,
                         Type = businessReview.business.Type
                     }
                 }).ToListAsync();
