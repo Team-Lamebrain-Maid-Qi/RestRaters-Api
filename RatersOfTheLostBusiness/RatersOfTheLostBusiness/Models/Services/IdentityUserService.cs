@@ -43,7 +43,6 @@ namespace RatersOfTheLostBusiness.Models.Services
                 {
                     Id = user.Id,
                     Username = user.UserName,
-                    //ADD LINQ QUERY to get the reviewer record
                     ReviewerID = rI.Id,
                     Reviewer = rI,
                     Token = await tokenService.GetToken(user, System.TimeSpan.FromMinutes(15))
