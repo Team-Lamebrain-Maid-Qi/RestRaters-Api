@@ -29,7 +29,7 @@ namespace RatersOfTheLostBusiness.Data
             // Businesses
             // id, name, city, state, address, phone, type
             modelBuilder.Entity<Business>().HasData(
-                new Business
+               new Business
                 {
                     Id = 1, Name = "Twilio", Address = "375 Beale Street Suite 300", City = "San Franciso", State = "CA", PhoneNumber = "844-814-4627", Type = "Software Service"
                 },
@@ -45,8 +45,6 @@ namespace RatersOfTheLostBusiness.Data
                 {
                     Id = 4, Name = "GeekGeeks", Address = "720 2nd Avenue", City = "Seattle", State = "WA", PhoneNumber = "844-814-4621", Type = "Tech Services"
                 }
-
-
             );
 
             // People
@@ -61,7 +59,7 @@ namespace RatersOfTheLostBusiness.Data
                     PhoneNumber = "555-555-1221",
                     UserName = "BestGreenLatern"
                 },
-                    new Reviewer
+                new Reviewer
                     {
                         Id = 2,
                         First = "Stacy",
@@ -83,7 +81,7 @@ namespace RatersOfTheLostBusiness.Data
                     BusinessId = 1,
                     ReviewerId = 1
                 },
-                 new BusinessReview
+                new BusinessReview
                   {
                     Id = 2,
                     Rating = 2,
@@ -91,7 +89,7 @@ namespace RatersOfTheLostBusiness.Data
                     BusinessId = 3,
                     ReviewerId = 2
                   },
-                 new BusinessReview
+                new BusinessReview
                   {
                     Id = 3,
                     Rating = 4,
@@ -99,7 +97,7 @@ namespace RatersOfTheLostBusiness.Data
                     BusinessId = 2,
                     ReviewerId = 2
                  }, 
-                 new BusinessReview
+                new BusinessReview
                  {
                      Id = 4,
                      Rating = 3,

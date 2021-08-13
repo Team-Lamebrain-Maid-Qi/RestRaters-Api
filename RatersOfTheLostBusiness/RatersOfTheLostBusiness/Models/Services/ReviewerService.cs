@@ -64,7 +64,8 @@ namespace RatersOfTheLostBusiness.Models.Services
                             ReviewerId = t.reviewer.Id,
                             BusinessId = t.business.Id,
                             Rating = t.Rating,
-                            Review = t.Review
+                            Review = t.Review,
+                            Name = t.business.Name,
                         }).ToList()
                 }).ToListAsync();
         }
