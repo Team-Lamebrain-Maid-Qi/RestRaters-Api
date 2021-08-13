@@ -58,12 +58,7 @@ namespace RatersOfTheLostBusiness.Models.Services
                     Name = b.Name,
                     Address = b.Address,
                     //ADD MAYBE: CUMULATIVE RATING
-                    Review = b.BusinessReviews
-                    .Select(br => new BusinessReviewDto
-                    {
-                        Rating = br.Rating,
-                        Review = br.Review
-                    }).ToString()
+                    Review = "Review Here"
                 }).FirstOrDefaultAsync(b => b.Name == name);
         }
         public async Task<List<BusinessDto>> GetBusinesses() // async

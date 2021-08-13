@@ -10,6 +10,7 @@ namespace RatersOfTheLostBusiness.Models
     {
         [Column(TypeName = "decimal(6,2)")]
         public decimal Rating { get; set; }
+        public int Id { get; set; }
         public string Review { get; set; }
         public int BusinessId { get; set; }
         public int ReviewerId { get; set; }

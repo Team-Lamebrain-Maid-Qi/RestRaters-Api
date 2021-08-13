@@ -31,6 +31,7 @@ namespace RatersOfTheLostBusiness.Models.Services
             return await _context.businessReviews
                 .Select(businessReview => new BusinessReviewDto
                 {
+                    Id = businessReview.Id,
                     BusinessId = businessReview.BusinessId,
                     ReviewerId = businessReview.ReviewerId,
                     Review = businessReview.Review,
@@ -50,7 +51,7 @@ namespace RatersOfTheLostBusiness.Models.Services
                         PhoneNumber = businessReview.business.PhoneNumber,
                         Type = businessReview.business.Type
                     }
-                }).FirstOrDefaultAsync();
+                }).FirstOrDefaultAsync(br => br.Id == id);
 
         }
         public async Task<List<BusinessReviewDto>> GetBusinessReviews() // async
@@ -58,6 +59,7 @@ namespace RatersOfTheLostBusiness.Models.Services
             return await _context.businessReviews
                 .Select(businessReview => new BusinessReviewDto
                 {
+                    Id = businessReview.Id,
                     BusinessId = businessReview.BusinessId,
                     ReviewerId = businessReview.ReviewerId,
                     Review = businessReview.Review,

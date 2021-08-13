@@ -83,7 +83,7 @@ namespace Lab12.Controllers
             if (userInput == business.Name)
             {
                 //return the corresponding name, address and rating
-                responseToUser.Message($"{business.Name} is located at {business.Address} the last review said: {business.ReviewSms.Review} ");
+                responseToUser.Message($"{business.Name} is located at {business.Address} the last review said: {business.ReviewSms} ");
             }
 
             return TwiML(responseToUser);

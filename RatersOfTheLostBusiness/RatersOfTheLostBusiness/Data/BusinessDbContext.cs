@@ -77,6 +77,7 @@ namespace RatersOfTheLostBusiness.Data
             modelBuilder.Entity<BusinessReview>().HasData(
                 new BusinessReview
                 {
+                    Id = 1,
                     Rating = 1,
                     Review = "Terrible",
                     BusinessId = 1,
@@ -84,6 +85,7 @@ namespace RatersOfTheLostBusiness.Data
                 },
                  new BusinessReview
                   {
+                    Id = 2,
                     Rating = 2,
                     Review = "The name says it all TjMaxx? more like TjMinn",
                     BusinessId = 3,
@@ -91,6 +93,7 @@ namespace RatersOfTheLostBusiness.Data
                   },
                  new BusinessReview
                   {
+                    Id = 3,
                     Rating = 4,
                     Review = "Margaritas so good you get 4",
                     BusinessId = 2,
@@ -98,6 +101,7 @@ namespace RatersOfTheLostBusiness.Data
                  }, 
                  new BusinessReview
                  {
+                     Id = 4,
                      Rating = 3,
                      Review = "Way better service than those geeks at best buy",
                      BusinessId = 4,

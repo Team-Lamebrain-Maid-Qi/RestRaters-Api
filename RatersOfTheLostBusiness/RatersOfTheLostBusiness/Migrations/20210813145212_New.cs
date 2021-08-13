@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RatersOfTheLostBusiness.Migrations
 {
-    public partial class AddedSeedBRTable : Migration
+    public partial class New : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -194,6 +194,7 @@ namespace RatersOfTheLostBusiness.Migrations
                     BusinessId = table.Column<int>(type: "int", nullable: false),
                     ReviewerId = table.Column<int>(type: "int", nullable: false),
                     Rating = table.Column<decimal>(type: "decimal(6,2)", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false),
                     Review = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -226,12 +227,22 @@ namespace RatersOfTheLostBusiness.Migrations
             migrationBuilder.InsertData(
                 table: "businesses",
                 columns: new[] { "Id", "Address", "City", "Name", "PhoneNumber", "State", "Type" },
-                values: new object[] { 1, "375 Beale Street Suite 300", "San Franciso", "Twilio", "844-814-4627", "CA", "Software Service" });
+                values: new object[,]
+                {
+                    { 1, "375 Beale Street Suite 300", "San Franciso", "Twilio", "844-814-4627", "CA", "Software Service" },
+                    { 2, "400 N 140th Street", "NorthGate", "Margaritas", "844-814-4628", "WA", "Restaurant" },
+                    { 3, "96 Main Street", "Greenville", "TjMinn", "844-814-4623", "WY", "Retail" },
+                    { 4, "720 2nd Avenue", "Seattle", "GeekGeeks", "844-814-4621", "WA", "Tech Services" }
+                });
 
             migrationBuilder.InsertData(
                 table: "reviewers",
                 columns: new[] { "Id", "Email", "First", "Last", "PhoneNumber", "UserName" },
-                values: new object[] { 1, "JS191@example.com", "John", "Stewart", "555-555-1221", "BestGreenLatern" });
+                values: new object[,]
+                {
+                    { 1, "JS191@example.com", "John", "Stewart", "555-555-1221", "BestGreenLatern" },
+                    { 2, "SM191@example.com", "Stacy", "McGuire", "555-555-1220", "LittleMissStacy" }
+                });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoleClaims",
@@ -248,8 +259,14 @@ namespace RatersOfTheLostBusiness.Migrations
 
             migrationBuilder.InsertData(
                 table: "businessReviews",
-                columns: new[] { "BusinessId", "ReviewerId", "Rating", "Review" },
-                values: new object[] { 1, 1, 1m, "Terrible" });
+                columns: new[] { "BusinessId", "ReviewerId", "Id", "Rating", "Review" },
+                values: new object[,]
+                {
+                    { 1, 1, 1, 1m, "Terrible" },
+                    { 4, 1, 4, 3m, "Way better service than those geeks at best buy" },
+                    { 3, 2, 2, 2m, "The name says it all TjMaxx? more like TjMinn" },
+                    { 2, 2, 3, 4m, "Margaritas so good you get 4" }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
